@@ -12,6 +12,7 @@
 #    git: 2.9.x or higher
 #    Python: 2.7.x
 #    A code editor of your choice, we recommend VSCode.
+cd 
 
 curl -O https://hyperledger.github.io/composer/latest/prereqs-ubuntu.sh
 
