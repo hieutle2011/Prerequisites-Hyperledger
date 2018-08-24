@@ -23,5 +23,9 @@ chmod u+x prereqs-ubuntu.sh
 
 ./prereqs-ubuntu.sh
 
+sudo groupadd docker
+
+sudo usermod -aG docker $USER
+
 rm prereqs-ubuntu.sh
 
