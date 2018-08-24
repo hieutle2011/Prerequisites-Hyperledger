@@ -1,9 +1,13 @@
 # Prerequisites-Hyperledger
 ### Script files to install environment
 
-1. Run file composer-prereqs.sh
+1. Make files executable
 
-2. Run file composer-dev-tools.sh
+chmod +x composer-dev-tools.sh composer-prereqs.sh
+
+2. Run file composer-prereqs.sh
+
+3. Run file composer-dev-tools.sh
 
 
 # Issue: 
