@@ -12,7 +12,7 @@ $ ./composer-dev-tools.sh
 
 ### Couldn't connect to Docker daemon at http+unix://var/run/docker.sock
 
-# 1. Create the docker group.
+// 1. Create the docker group.
 $ sudo groupadd docker
 
 # 2. Add your user to the docker group.
