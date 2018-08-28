@@ -1,0 +1,102 @@
+// Prerequisites:
+
+cd ~/fabric-dev-servers
+export FABRIC_VERSION=hlfv12
+./startFabric.sh
+./createPeerAdminCard.sh
+
+
+// Step One: Creating a business network structure
+
+yo hyperledger-composer:businessnetwork
+
+Enter y for the network name, and desired information for description, author name, and author email.
+
+Select Apache-2.0 as the license.
+
+Select org.healthcare as the namespace.
+
+Select No when asked whether to generate an empty network or not.
+
+
+
+// Step Two: Defining a business network
+.cto
+permissions.acl
+logic.js
+
+
+
+//Step Three: Generate a business network archive
+Using the command line, navigate to the healthcare-network directory.
+From the healthcare-network directory, run the following command:
+composer archive create -t dir -n .
+
+
+// Step Four: Deploying the business network
+
+
+Prepare the Hyperledger Fabric peers
+
+composer network install \
+--card PeerAdmin@hlfv1 \
+--archiveFile healthcare-network.bna
+
+
+Start your Business Network on your Hyperledger Fabric
+
+composer network start \
+--networkName healthcare-network \
+--networkVersion 0.0.2-deploy.172 \
+--networkAdmin admin \
+--networkAdminEnrollSecret adminpw \
+--card PeerAdmin@hlfv1
+
+To import the network administrator identity as a usable business network card, run the following command:
+composer card import --file admin@healthcare-network.card
+
+To check network deployed successfully
+composer network ping --card admin@healthcare-network
+
+// Step Five: Generating a REST server
+To create the REST API, navigate to the healthcare-network directory and run the following command:
+composer-rest-server
+
+Enter admin@healthcare-network as the card name.
+
+Select never use namespaces when asked whether to use namespaces in the generated API.
+
+Select No when asked whether to secure the generated API.
+
+Select Yes when asked whether to enable event publication.
+
+Select No when asked whether to enable TLS security.
+
+
+// Step Six: Generating an application
+
+To create your Angular 4 application, navigate to healthcare-network directory and run the following command:
+yo hyperledger-composer:angular
+
+
+
+
+
+  composer identity issue -c admin@healthcare-network -f nh1.card -u nh1 -a "resource:org.healthcare.NursingHome#nh1"
+
+
+
+
+
+Destroy a previous setup
+
+    docker kill $(docker ps -q)
+    docker rm $(docker ps -aq)
+    docker rmi $(docker images dev-* -q)
+
+
+
+
+//////////////////////////////////////////////////////////////////
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+input to button  :   data-target="#addTransactionModal" 
