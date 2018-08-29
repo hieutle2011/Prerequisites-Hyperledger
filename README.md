@@ -13,6 +13,11 @@ cd Prerequisites-Hyperledger && chmod +x composer-dev-tools.sh composer-prereqs.
 
 ./composer-dev-tools.sh 
 
+## install the Fabric Samples and binaries v1.2.0
+
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.0
+
+
 ## To kill and remove all previous Docker containers
 
 docker kill $(docker ps -q)
