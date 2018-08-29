@@ -13,6 +13,14 @@ cd Prerequisites-Hyperledger && chmod +x composer-dev-tools.sh composer-prereqs.
 
 ./composer-dev-tools.sh 
 
+## To kill and remove all previous Docker containers
+
+docker kill $(docker ps -q)
+
+docker rm $(docker ps -aq)
+
+docker rmi $(docker images dev-* -q)
+
 
 ## Issue: 
 
